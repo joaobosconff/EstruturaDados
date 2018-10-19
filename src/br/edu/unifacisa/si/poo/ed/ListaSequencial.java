@@ -9,24 +9,34 @@ public class ListaSequencial {
 	private int inseridos;
 
 	public void adicionar(Object item) throws EstadoInvalidoException {
-		verificaLista(arrayInterno);
+		if (item == null) {
+			throw new EstadoInvalidoException();
+		}
+		if (inseridos == arrayInterno.length) {
+
+			Object[] novo = new Object[arrayInterno.length * 2];
+
+			for (int i = 0; i < arrayInterno.length; i++) {
+				novo[i] = arrayInterno[i];
+			}
+
+			arrayInterno = novo;
+		}
 		arrayInterno[inseridos] = item;
 		inseridos++;
 	}
 
-	public void adicionar(Object item, int posicao) throws EstadoInvalidoException {
-
-	}
 
 	public Object obter(int pos) {
 		return arrayInterno[pos];
 	}
 
-	public void remover(Object item) throws PosicaoInvalidaException {
-
+	public void remover(Object item) throws EstadoInvalidoException, PosicaoInvalidaException {
 		int posicaoEncontrada = -1;
-
-		if (item != null) {
+		
+		if(item == null) {
+			throw new EstadoInvalidoException();}
+		else {
 
 			for (int i = 0; i < arrayInterno.length; i++) {
 				if (item.equals(arrayInterno[i])) {
@@ -34,12 +44,11 @@ public class ListaSequencial {
 					break;
 				}
 			}
-
-			if(posicaoEncontrada != -1) {
-				remover(posicaoEncontrada);
-			}
 		}
+	if(posicaoEncontrada != -1) {
+		remover(posicaoEncontrada);}
 	}
+	
 
 	public void remover(int posicao) throws PosicaoInvalidaException {
 
@@ -67,16 +76,5 @@ public class ListaSequencial {
 		return inseridos;
 	}
 	
-	public void verificaLista(Object[] arrayInterno) {
-		if (inseridos == arrayInterno.length) {
 
-			Object[] novo = new Object[arrayInterno.length * 2];
-
-			for (int i = 0; i < arrayInterno.length; i++) {
-				novo[i] = arrayInterno[i];
-			}
-
-			arrayInterno = novo;
-		}
-	}
 }

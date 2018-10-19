@@ -8,8 +8,10 @@ public class Pilha {
 
 	private int inseridos;
 
-	public void push(Object objeto) {
-
+	public void push(Object objeto)  throws EstadoInvalidoException{
+		if(objeto == null) {
+			throw new EstadoInvalidoException();}
+		
 		if (inseridos == arrayInterno.length) {
 
 			Object[] novoArray = new Object[arrayInterno.length * 2];
