@@ -12,7 +12,13 @@ public class Fila {
 	
 	
 	public void enqueue(Object objeto) {
-		verificaLista(fila);
+		if(inseridos == fila.length) {
+			Object[] novo = new Object[fila.length * 2];
+			for(int i = 0; i < fila.length;i++) {
+				novo[i] = fila[i];
+			}
+			fila = novo;
+		} 
 		fila[inseridos] = objeto;
 		inseridos++;
 		
@@ -47,18 +53,6 @@ public class Fila {
 		return inseridos == 0;
 	}
 	
-	
-	
-	public void verificaLista(Object[] fila) {
-		if(inseridos == fila.length) {
-			Object[] novo = new Object[fila.length * 2];
-			for(int i = 0; i < fila.length;i++) {
-				novo[i] = fila[i];
-			}
-			fila = novo;
-		} 
-		
-	}
 	
 	
 }
