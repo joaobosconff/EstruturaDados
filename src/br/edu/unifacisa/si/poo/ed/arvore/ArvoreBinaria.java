@@ -135,6 +135,7 @@ public class ArvoreBinaria {
 				// Se tiver 1 filho ou nenhum
 			} else {
 				System.out.println("  Removido  " + node.getValor());
+				// se tiver um filho,o filho toma o lugar do pai
 				if (node.getEsquerda() == null) {
 					node = node.getDireita();
 				} else {
@@ -152,8 +153,10 @@ public class ArvoreBinaria {
 		} else if (node.getEsquerda() != null) {
 			node.setEsquerda(removeMinimo(node.getEsquerda()));
 			return node;
+
+			// Quando encontra o minimo,remove ele,setando null
 		} else {
-			return node.getDireita();
+			return null;
 		}
 	}
 
