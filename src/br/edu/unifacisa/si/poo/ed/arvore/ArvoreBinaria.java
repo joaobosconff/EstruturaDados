@@ -39,6 +39,11 @@ public class ArvoreBinaria {
 		return qtdNodeEsq + qtdNodeDir + 1;
 	}
 
+	public void inserir(int valor) {
+		inserir(raiz, valor);
+	}
+
+	// RECURSÃO
 	public void inserir(Node node, int valor) {
 		if (this.raiz == null) {
 			setRaiz(new Node(valor));
@@ -67,43 +72,6 @@ public class ArvoreBinaria {
 	}
 
 	public void inserirV2(int valor) {
-		Node novoNode = new Node(valor);
-
-		if (this.raiz == null) {
-			setRaiz(novoNode);
-		}
-
-		Node atual = raiz;
-		Node anterior;
-		boolean achou = false;
-
-		while (!achou) {
-			anterior = atual;
-
-			// Procurando o lugar que o nó vai ser inserido
-			if (valor <= atual.getValor()) {
-
-				// Indo pela esquerda
-				atual = atual.getEsquerda();
-				if (atual == null) {
-					anterior.setEsquerda(novoNode);
-					System.out.println("Inserido nó " + valor);
-					achou = true;
-				}
-			} else {
-				// Indo pela direita
-				atual = atual.getDireita();
-				if (atual == null) {
-					anterior.setDireita(novoNode);
-					System.out.println("Inserido nó " + valor);
-					achou = true;
-				}
-			}
-		}
-
-	}
-
-	public void inserirV3(int valor) {
 		Node novoNode = new Node(valor);
 
 		if (this.raiz == null) {
@@ -177,9 +145,9 @@ public class ArvoreBinaria {
 		}
 	}
 
-	private Node removeMinimo(Node node) {
+	private Node removeMinimo(Node node) throws Exception {
 		if (node == null) {
-			System.out.println("  ERRO ");
+			throw new Exception("inválido");
 
 		} else if (node.getEsquerda() != null) {
 			node.setEsquerda(removeMinimo(node.getEsquerda()));
@@ -187,11 +155,10 @@ public class ArvoreBinaria {
 		} else {
 			return node.getDireita();
 		}
-		return null;
 	}
 
 	private Node encontraMinimo(Node node) {
-		// Procura o menor nó,indo pela esquerdak
+		// Procura o menor nó,indo pela esquerda
 		if (node != null) {
 			while (node.getEsquerda() != null) {
 				node = node.getEsquerda();
