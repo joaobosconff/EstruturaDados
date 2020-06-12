@@ -6,7 +6,7 @@
 
 ### Pré-requisito
 
-* Para executar o projeto, é necessário JAVA 8 instalado na máquina
+* Para executar o projeto, é necessário JAVA 8 instalado na máquina, e algum editor a sua escolha
 
 ##### Instalar JAVA na sua máquina
 * [JAVA](https://www.java.com/pt_BR/) V8
