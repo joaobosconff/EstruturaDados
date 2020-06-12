@@ -1,5 +1,7 @@
 package br.edu.unifacisa.si.poo.ed.sequencial;
 
+import br.edu.unifacisa.si.poo.ed.sequencial.test.PilhaObjetoException;
+
 public class Pilha {
 
 	public static final int TAM_INICIAL = 3;
@@ -8,10 +10,11 @@ public class Pilha {
 
 	private int inseridos;
 
-	public void push(Object objeto)  throws EstadoInvalidoException{
-		if(objeto == null) {
-			throw new EstadoInvalidoException();}
-		
+	public void push(String objeto) throws PilhaObjetoException {
+		if (objeto == null) {
+			throw new PilhaObjetoException();
+		}
+
 		if (inseridos == arrayInterno.length) {
 
 			Object[] novoArray = new Object[arrayInterno.length * 2];

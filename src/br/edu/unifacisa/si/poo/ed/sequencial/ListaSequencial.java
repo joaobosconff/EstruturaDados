@@ -1,16 +1,19 @@
 package br.edu.unifacisa.si.poo.ed.sequencial;
 
+import br.edu.unifacisa.si.poo.ed.sequencial.test.ObjetoFilaException;
+import br.edu.unifacisa.si.poo.ed.sequencial.test.PosicaoInvalidaException;
+
 public class ListaSequencial {
 
-	private static final int TAM_INICIAL= 3;
+	private static final int TAM_INICIAL = 3;
 
 	private Object[] arrayInterno = new Object[TAM_INICIAL];
 
 	private int inseridos;
 
-	public void adicionar(Object item) throws EstadoInvalidoException {
+	public void adicionar(Object item) throws ObjetoFilaException {
 		if (item == null) {
-			throw new EstadoInvalidoException();
+			throw new ObjetoFilaException();
 		}
 		if (inseridos == arrayInterno.length) {
 
@@ -26,17 +29,16 @@ public class ListaSequencial {
 		inseridos++;
 	}
 
-
 	public Object obter(int pos) {
 		return arrayInterno[pos];
 	}
 
-	public void remover(Object item) throws EstadoInvalidoException, PosicaoInvalidaException {
+	public void remover(Object item) throws ObjetoFilaException, PosicaoInvalidaException {
 		int posicaoEncontrada = -1;
-		
-		if(item == null) {
-			throw new EstadoInvalidoException();}
-		else {
+
+		if (item == null) {
+			throw new ObjetoFilaException();
+		} else {
 
 			for (int i = 0; i < arrayInterno.length; i++) {
 				if (item.equals(arrayInterno[i])) {
@@ -45,10 +47,10 @@ public class ListaSequencial {
 				}
 			}
 		}
-	if(posicaoEncontrada != -1) {
-		remover(posicaoEncontrada);}
+		if (posicaoEncontrada != -1) {
+			remover(posicaoEncontrada);
+		}
 	}
-	
 
 	public void remover(int posicao) throws PosicaoInvalidaException {
 
@@ -75,6 +77,5 @@ public class ListaSequencial {
 	public int tamanho() {
 		return inseridos;
 	}
-	
 
 }
